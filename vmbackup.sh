@@ -15,7 +15,7 @@ for vm in $(echo $vms)
 do
 
 time=$(date --date "now" +%d_%m_%y_%H:%M)
-snapName=$vm-bk-$time
+snapName=$vm-bk-$time.xva
 
 ############
 ## Passo 1 - Criando Snapshot e pegando o UID
@@ -42,7 +42,7 @@ xe template-param-set is-a-template=false uuid=$ID &&
         }
 
 ### Passo 3 - Exportando vm para dir de backup
-xe vm-export vm=$snapName  filename=$dirBack/$snapName
+xe vm-export vm=$snapName  filename=$dirBack/$snapName compress=true
         {
         logger -t "XenBackup" -s "$vm - OK Passo 3"
         }||{
