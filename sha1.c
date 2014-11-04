@@ -11,6 +11,9 @@ Testado no windows 7 x64 com dev c++ 5.7.1 com gcc x64
 #define HASH_LENGTH 20
 #define BLOCK_LENGTH 64
 
+/* limpa as variaveis passadas a ele onde 4096 é o tamanho da variavel*/
+#define CLEAR(x) memset(x,'\0',4096)
+
 /* char para dar o retorno do hash*/
 char BufferHash[4096];
 char tempBufferHash[4096];
@@ -215,6 +218,8 @@ uint8_t hmacKey4[]={
 
 void returnHash(uint8_t* hash) {
 	int i;
+	CLEAR(tempBufferHash);
+	CLEAR(BufferHash);
 	for (i=0; i<20; i++) {
 		sprintf(tempBufferHash,"%02x", hash[i]);
 		strcat (BufferHash,tempBufferHash);
