@@ -245,5 +245,25 @@ int main (int argc, char **argv) {
 	returnHash(sha1_result(&s));
 	printf("%s",BufferHash);
 	
+	/*
+	 Atenção:
+	  Caso queira criptografar mais valores, o ideal é copiar o resultado para a variavel, e depois iniciar o processo novamente.
+	  
+	  // Valor 1
+	  sha1_init(&s);
+	  sha1_write(&s, valor1, strlen(valor1));
+	  returnHash(sha1_result(&s));
+	  printf("%s",BufferHash);
+
+	  // Valor 2
+	  sha1_init(&s);
+	  sha1_write(&s, valor2, strlen(valor2));
+	  returnHash(sha1_result(&s));
+	  printf("%s",BufferHash);
+	  
+	  Desta maneira você criptografou dois valores, apenas faltou fazer a copia do retorno para a variavel.
+	  
+	*/
+	
 	return 0;
 }
